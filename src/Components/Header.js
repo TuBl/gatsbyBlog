@@ -1,27 +1,70 @@
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
+import classNames from "classnames"
+import "../assets/css/style.css"
+import NavStyle from "../assets/scss/header.module.scss"
 
-import NavStyle from "../assets/css/header.module.scss"
 const Header = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
   return (
-    <div>
-      <nav className={NavStyle.header}>
+    <div className={NavStyle.header}>
+      <nav
+        className={classNames({
+          [NavStyle.link]: true,
+        })}
+      >
         <h1>
-          <Link to="/">
-            <i className="fas fa-code" /> Main page
+          <Link className={NavStyle.title} to="/">
+            <i className="fas fa-code" /> {data.site.siteMetadata.title}
           </Link>
         </h1>
         <Fragment>
           {" "}
-          <ul>
+          <ul className={NavStyle.navList}>
             <li>
-              <Link to="/blog">Blog</Link>
+              <Link
+                className={NavStyle.navItem}
+                activeClassName={NavStyle.activeNavItem}
+                to="/"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link
+                className={NavStyle.navItem}
+                activeClassName={NavStyle.activeNavItem}
+                to="/blog"
+              >
+                Blog
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link
+                className={NavStyle.navItem}
+                activeClassName={NavStyle.activeNavItem}
+                to="/about"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={NavStyle.navItem}
+                activeClassName={NavStyle.activeNavItem}
+                to="/contact"
+              >
+                Contact
+              </Link>
             </li>
           </ul>
         </Fragment>

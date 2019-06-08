@@ -1,0 +1,13 @@
+ul {
+  list-style: none;
+}
+
+.footer-center {
+  margin: 0 auto;
+  max-width: 850px;
+  padding: 1rem;
+}
+
+ol {
+  list-style: none;
+}

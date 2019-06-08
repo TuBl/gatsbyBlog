@@ -1,8 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 import Layout from "../Components/Layout"
+import Head from "../Components/Head"
 const about = () => (
   <Layout>
+    <Head title="About" />
     <div className="layout">
       <h1>About</h1>
       <textarea rows="4" cols="50">

@@ -1,7 +1,9 @@
 import React from "react"
 import Layout from "../Components/Layout"
+import Head from "../Components/Head"
 const contact = () => (
   <Layout>
+    <Head title="Contact" />
     <div className="layout">
       <h1>Contact</h1>
       <h3>

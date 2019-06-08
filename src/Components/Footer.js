@@ -1,12 +1,30 @@
-import React, { Fragment } from "react"
-
+import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import "../assets/css/style.css"
+import footerStyles from "../assets/scss/footer.module.scss"
+import classNames from "classnames"
 const Footer = () => {
+  const author = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          author
+        }
+      }
+    }
+  `)
+  // className="footer-center"
   return (
-    <Fragment>
+    <div
+      className={classNames({
+        [footerStyles.footer]: true,
+        "footer-center": true,
+      })}
+    >
       <ul className="copyright actions">
         <li>
-          &copy; {new Date().getFullYear()} Tariq Elmughrabi &nbsp; | &nbsp;
-          Made with{" "}
+          &copy; {new Date().getFullYear()} {author.site.siteMetadata.author}{" "}
+          &nbsp; | &nbsp; Made with{" "}
           <span role="img" aria-label="coffee" style={{ fontSize: "1.6em" }}>
             ☕
           </span>
@@ -20,7 +38,7 @@ const Footer = () => {
           </a>
         </li>
       </ul>
-    </Fragment>
+    </div>
   )
 }
 
